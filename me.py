@@ -7,7 +7,18 @@ def main(args):
         print "ERROR: Missing file to analyze"
         exit()
 
-    print "Analyzing", args[1]
+    filename = args[1]
+
+    print "Analyzing", filename
+
+    with open(filename) as f:
+        words = [w.lower() for w in f.read().split(" ")]
+
+        print "Found", len(words), "words"
+
+        for target_word in ["I", "me", "my", "mine", "I'm"]:
+            occurrences = len([w for w in words if w == target_word.lower()])
+            print "Found", occurrences, "occurrences of", target_word 
 
 if __name__ == "__main__":
     main(argv)
