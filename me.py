@@ -1,6 +1,11 @@
 from sys import argv
 from sys import exit
 
+OFFENDING_WORDS = [
+    "I", "me", "my", "mine", "I'm",
+    "you", "you're", "your"
+]
+
 def main(args):
 
     if not len(args) >= 2:
@@ -16,9 +21,9 @@ def main(args):
 
         print "Found", len(words), "words"
 
-        for target_word in ["I", "me", "my", "mine", "I'm"]:
-            occurrences = len([w for w in words if w == target_word.lower()])
-            print "Found", occurrences, "occurrences of", target_word 
+        for target_word in OFFENDING_WORDS:
+            occurrences = [w for w in words if w == target_word.lower()]
+            print target_word.rjust(10), "=>", len(occurrences), "times"  
 
 if __name__ == "__main__":
     main(argv)
