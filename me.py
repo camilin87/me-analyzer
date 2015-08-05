@@ -7,7 +7,14 @@ OFFENDING_WORDS = [
 ]
 
 def _sanitize_word(word):
-    return word.lower().replace('"', '')
+    CHARACTERS_TO_ESCAPE = ['"', '`']
+
+    word = word.lower()
+
+    for quote_char in CHARACTERS_TO_ESCAPE:
+        word = word.replace(quote_char, '')
+
+    return word
 
 def main(args):
     if not len(args) >= 2:
