@@ -6,8 +6,10 @@ OFFENDING_WORDS = [
     "you", "you're", "your"
 ]
 
-def main(args):
+def _sanitize_word(word):
+    return word.lower().replace('"', '')
 
+def main(args):
     if not len(args) >= 2:
         print "ERROR: Missing file to analyze"
         exit()
@@ -17,7 +19,8 @@ def main(args):
     print "Analyzing", filename
 
     with open(filename) as f:
-        words = [w.lower() for w in f.read().split(" ")]
+        all_words = f.read().split(" ")
+        words = [_sanitize_word(w) for w in all_words]
 
         print "Found", len(words), "words"
         total_occurrences = 0
