@@ -1,5 +1,6 @@
 from sys import argv
 from sys import exit
+from os.path import expanduser
 
 OFFENDING_WORDS = [
     "I", "me", "my", "mine", "I'm",
@@ -21,7 +22,7 @@ def main(args):
         print "ERROR: Missing file to analyze"
         exit()
 
-    filename = args[1]
+    filename = expanduser(args[1])
 
     print "Analyzing", filename
 
