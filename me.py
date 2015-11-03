@@ -5,7 +5,7 @@ from os.path import expanduser
 OFFENDING_WORDS = [
     "I", "me", "my", "mine", "I'm",
     "you", "you're", "your",
-    "yours", "our"
+    "yours", "our", "we"
 ]
 
 def _sanitize_word(word):
